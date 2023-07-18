@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Show Recipe</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sides">
+            <div class="side">
+                <h1>Welcome, {{recipe.first_name}}</h1>
+                <p>This sure is one heck of a recipe!</p>
+                <h2>{{recipe.name}}</h2>
+            </div>
+            <div class="side">
+                <div>
+                    <a href="/dashboard/">Back to recipes</a>
+                    <a href="/user/logout">Logout</a>
+                </div>
+                <p>Posted by: {{recipe.user_id}}</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

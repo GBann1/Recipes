@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome User <span id="userFirstName">{{user.first_name}}</span></h1>
+        <div class="navbar">
+            <p>All posted recipes:</p>
+            <div>
+                <a href="/recipe/new">+Create</a>
+                <a href="/user/logout">Logout</a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Under 30</th>
+                    <th>Posted By</th>
+                    <th>Actions<th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                    <tr>
+                        <td>{{recipe.name}}</td>
+                        <!-- displays ys/no value in table -->
+                        {% if recipe.under_30 == 0 %}
+                            <td>no</td>
+                        {% else %}
+                            <td>yes</td>
+                        {% endif %}
+                        <td>{{recipe.user.first_name}}{{recipe.user.last_name}}</td>
+                        <td>
+                            {% if user.id == recipe.user_id %}
+                            <p><a href="/recipe/{{recipe.id}}/show">View Recipe</a> | <a href="#####"> Edit</a> | <a href="/recipe/{{recipe.id}}/delete">Delete</a></p>
+                            {% else %}
+                            <a href="/recipe/{{recipe.id}}/show">View Recipe</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(63, 63, 218, 0.903);
+}
+.sides {
+    display: flex;
+    border: 2px solid black;
+    background-color: whitesmoke;
+}
+.side {
+    background-color: white;
+    color: black;
+    font-size: 15pt;
+}

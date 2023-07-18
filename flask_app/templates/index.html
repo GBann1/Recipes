@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Login</title>
+</head>
+<body>
+    <h1> Recipe Share! </h1>
+    <div>
+        <h2>Register</h2>
+        <form action="/user/create" method="POST">
+            <div>
+                <label for="first_name">First Name: </label>
+                <label for="last_name">Last Name: </label>
+                <label for="email">Email: </label>
+                <label for="password"> Password: </label>
+                <label for="confirm_password">Confirm Password: </label>
+            </div>
+            <div>
+                <input type="text" name="first_name">
+                <input type="text" name="last_name">
+                <input type="text" name="email">
+                <input type="text" name="password">
+                <input type="text" name="confirm_password">
+            </div>  
+            <input type="submit" value="Register">
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}              
+    </div>
+    <div>
+        <h2>Login</h2>
+        <form action="/user/login", method="POST">
+            <div>
+                <label for="email">Email: <label>
+                <label for="password">Password: </label>
+                <label for="confirm_password">Confirm Password:</label>
+            </div>
+            <div>
+                <input type="text" name="email">
+                <input type="text" name="password">
+                <input type="text" name="confirm_password">
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>
